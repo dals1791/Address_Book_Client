@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
   
-  const User = gql`
+  const Users = gql`
       {
         users{
           _id
@@ -15,7 +15,7 @@ function App() {
     
   
   const GetUsers = () =>{
-    const {loading, error, data}= useQuery(User)
+    const {loading, error, data}= useQuery(Users)
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
 
