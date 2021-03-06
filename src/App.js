@@ -4,37 +4,50 @@ import {gql,  useQuery} from '@apollo/client'
 import './App.css';
 
 function App() {
-  
-  const Users = gql`
+  const [users, setUsers] = React.useState(null)
+  const GET_USERS = gql`
       {
         users{
           _id
           name
+          handle
+          # connections{
+          #   user{
+          #     _id
+          #     }
+          # }
+          groups{
+            _id
+            title
+          }
         }
       }`
-    
   
-  const GetUsers = () =>{
-    const {loading, error, data}= useQuery(Users)
+    const {loading, error, data}= useQuery(GET_USERS)
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
-
-  return data.users.map((ele) => (
-    <div >
-      <h2>This is gql query</h2>
-      <p>
-        {ele._id}<br/>
-        {ele.name}
-      </p>
-    </div>
-  ));
+      
+  const renderUsers = () =>{
+    return data.users.map(user=>{
+      console.log(user)
+      return (
+        
+      <div>
+        <p>{user.name}</p>
+        <p>{user.handle}</p>
+        <p>{user.groups.map(group=>{
+          return(<p>{group._id}</p>)
+        })}</p>
+      </div>
+      )
+    })
   }
-
-  return (
+  React.useEffect(()=>{setUser(data.users)}, [])
+    return (
     
     <div className="App">
       <header className="App-header">
-       {GetUsers()}
+       {renderUsers()}
       </header>
     </div>
     
