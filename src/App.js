@@ -11,11 +11,9 @@ function App() {
           _id
           name
           handle
-          # connections{
-          #   user{
-          #     _id
-          #     }
-          # }
+          connections{
+            name
+          }
           groups{
             _id
             title
@@ -36,13 +34,16 @@ function App() {
         <p>{user.name}</p>
         <p>{user.handle}</p>
         <p>{user.groups.map(group=>{
-          return(<p>{group._id}</p>)
+          return(<p>{group.title}</p>)
+        })}</p>
+        <p>{user.connections.map(connection=>{
+          return(<p>{connection.name}</p>)
         })}</p>
       </div>
       )
     })
   }
-  React.useEffect(()=>{setUser(data.users)}, [])
+  
     return (
     
     <div className="App">
