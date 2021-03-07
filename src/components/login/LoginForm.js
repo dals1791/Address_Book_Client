@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useLazyQuery} from '@apollo/client'
 import {LOGIN} from '../../graphql/Queries'
+import {saveToken} from '../../helpers/AuthToken'
 
 
 const LoginForm = (props)=>{
@@ -10,15 +11,20 @@ const LoginForm = (props)=>{
     });
     
     const  [login, {data}] = useLazyQuery(LOGIN, {variables: formData})
-    console.log(data)
+    if(data && data.login.token){
+      saveToken(data.login.token)
+      console.log(data.login.token)
+    }
+    
     // if (loading) return <p>Loading...</p>;
     // if (error) return <p>ERROR :(</p>;
   
       // , {variables: {username: formData.username, password: formData.password}}
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
       event.preventDefault(); // Prevent Form from Refreshing
      login()
-      
+     
+     
     };
     
     const handleChange = (event) => {
