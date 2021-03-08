@@ -4,13 +4,16 @@ import RegisterForm from './RegisterForm'
 
 
 const Auth = ()=>{
- const [toggle, setToggle] = useState(false)
- 
+    const [toggleForm, setToggleForm] = useState(false)
+    const handleToggleForm = () =>{
+        setToggleForm(toggle=>!toggleForm)
+    }
 
     return (<>
-    <div>{<LoginForm/>}</div>
-    <div>{<RegisterForm/>}</div>
-        
+    <div className="userLogin_container">
+    {toggleForm ? <RegisterForm handleToggleForm={handleToggleForm}/> : <LoginForm handleToggleForm={handleToggleForm}/>}
+    
+    </div>
     
     </>)
 }
