@@ -21,10 +21,11 @@ const RegisterForm = (props)=>{
   };
   // console.log("This is Register formData", formData)
   return (
-    <div className="register_container">
-          <form className=" register_form_container" onSubmit={handleSubmit}>
+    <div className="register-container">
+      <h2>Welcome Aboard!</h2>
+          <form className="form-container" onSubmit={handleSubmit}>
             <input
-              className="form_input"
+              className="form-input"
               type="text"
               name="name"
               placeholder="Enter your Name"
@@ -32,7 +33,7 @@ const RegisterForm = (props)=>{
               onChange={handleChange}
             />
             <input
-              className="form_input"
+              className="form-input"
               type="text"
               name="username"
               placeholder="Enter a Username"
@@ -40,7 +41,7 @@ const RegisterForm = (props)=>{
               onChange={handleChange}
             />
             <input
-              className="form_input"  
+              className="form-input"  
               type="text"
               name="password"
               placeholder="Enter a Password"
@@ -48,21 +49,24 @@ const RegisterForm = (props)=>{
               onChange={handleChange}
             />
             <input
-              className="form_input"
+              className="form-input"
               type="text"
               name="handle"
               placeholder="Create a Unique Handle"
               value={formData.handle}
               onChange={handleChange}
             />
+            <div>
             <button
-              className="form_button"
+              className="form-button"
               type="submit"
             >
               Register User
             </button>
+            <button className="form-button" onClick={handleToggleForm}>Back to Login</button>
+            </div>
           </form>
-          <button className="form_button" onClick={handleToggleForm}>Back to Login</button>
+          
         </div>
   );
 }

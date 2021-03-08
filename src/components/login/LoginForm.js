@@ -35,10 +35,11 @@ const LoginForm = (props)=>{
     }
     return (
     
-      <div className="Login_container">
-        <form className="login_form_form_container">
+      <div className="login-container">
+        <h2>Welcome Back!</h2>
+        <form className="form-container">
             <input
-              className="form_input"
+              className="form-input"
               type="text"
               name="username"
               placeholder="Enter your Username"
@@ -46,7 +47,7 @@ const LoginForm = (props)=>{
               onChange={handleChange}
             />
             <input
-              className="form_input"
+              className="form-input"
               type="text"
               name="password"
               placeholder="Enter your Password"
@@ -54,16 +55,16 @@ const LoginForm = (props)=>{
               onChange={handleChange}
             />
           <button
-            className="form_button"
+            className="form-button"
             type="submit"
             onClick={handleSubmit}
           >
             Login
           </button>
         </form>
-      
-      <button  className="form_button" onClick={logout}>logout</button>
+      <button  className="form-button" onClick={logout}>logout</button>
       <p onClick={handleToggleForm}>New User? Click here to create a new account</p>
+      
       </div>
       
     );
