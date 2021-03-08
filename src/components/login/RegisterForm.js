@@ -1,10 +1,18 @@
 import React, {useState} from 'react'
-
+import {useMutation} from '@apollo/client'
+import {CREATE_USER} from '../../graphql/Mutations'
 const RegisterForm = (props)=>{
-    const [formData, setFormData] = useState({});
+    const [formData, setFormData] = useState({
+      name: '',
+      username: '',
+      password: '',
+      handle: ''
+    });
+    const [createUser, {data}] = useMutation(CREATE_USER, {variables: formData})
+    
     const handleSubmit = (event) => {
     event.preventDefault(); // Prevent Form from Refreshing
-    props.handleSubmit(formData); // Submit to Parents desired function
+    createUser()
   };
   
   const handleChange = (event) => {
@@ -22,7 +30,7 @@ const RegisterForm = (props)=>{
           />
           <input
             type="text"
-            name="userName"
+            name="username"
             placeholder="Enter a Username"
             value={formData.userName}
             onChange={handleChange}
