@@ -1,35 +1,37 @@
 import React from 'react'
 import './landing.css'
-import {useMutation, useQuery} from '@apollo/client'
+import {useMutation, useQuery, gql} from '@apollo/client'
 import{GET_USER_PROFILE} from '../../../graphql/Queries'
 import {DESTROY_GROUP} from '../../../graphql/Mutations'
 import GroupForm from './GroupForm'
 const Landing = () =>{
-
-    const {loading, error, data}= useQuery(GET_USER_PROFILE)
+    const stuff= useQuery(GET_USER_PROFILE)
+    console.log(stuff)
+    const {loading, error, data, refetch}= useQuery(GET_USER_PROFILE)
     const [destroyGroup] = useMutation(DESTROY_GROUP)
-        
+        console.log("this is query data", data)
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
     
     const handleDestroyGroup = (id) =>{
-        console.log("This is the groupId", id)
-        destroyGroup({
-            variables: { id}})
-            // update(cache) {
-            // cache.modify({
-            //     fields: {
-            //     userProfile(existingUserProfileRefs, { readField }) {
-            //         return existingUserProfileRefs.filter(
-            //         UserProfileRef => id !== readField('_id', UserProfileRef),
-            //         );
-            //     },
-            //     },
-            // });
-            // },
-            // return (...userProfile)
-        // });
-    };
+        // console.log("This is the groupId", id)
+        // console.log("this is user _id", data.userProfile._id)
+        destroyGroup({ variables: { groupId: id }, 
+            update: cache => {
+              let groups = [...cache.readQuery({ query: GET_USER_PROFILE}).userProfile.groups];
+              console.log("This is the cache data",data)
+              groups = groups.filter(({id: groupId}) => groupId !== id);
+              console.log("this is groups", groups)
+              cache.writeQuery({ 
+                  query: GET_USER_PROFILE, 
+                  data: { userProfile: [...data.userProfile.groups, groups] }
+                })
+            }
+        })
+    }
+        
+            
+    
 
     
     const renderGroups = () =>{
