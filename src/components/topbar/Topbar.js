@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
-import './nav.css'
-const NavBar = ()=>{
+import './topbar.css'
+const Topbar = ()=>{
     return (
-        <div className="navbar-container">
-            
-            <div className="navbar-links-container">
+        <div className="topbar-container">
+            <h1>Address Book</h1>
+            {/* <div className="navbar-links-container">
                 <ul style={{listStyleType: "none"}}> 
                     <Link to="/landing" style={{ textDecoration: "none" }}>
                     <li>Landing</li>
@@ -21,9 +21,9 @@ const NavBar = ()=>{
                     <li>Login</li>
                     </Link>
                 </ul>
-            </div>
+            </div> */}
         </div>     
     )
    }
    
-   export default NavBar
+   export default Topbar

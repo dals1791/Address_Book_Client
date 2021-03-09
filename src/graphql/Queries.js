@@ -7,7 +7,6 @@ query login($username: String!, $password: String!){
   }
 }
 `
-
 export const GET_USERS = gql`
   {
     users{
@@ -20,6 +19,59 @@ export const GET_USERS = gql`
       groups{
         _id
         title
+      }
+    }
+  }`
+  export const GET_USER_PROFILE = gql`
+  {
+    userProfile{
+      _id
+      name
+      handle
+      personalContact{
+        address{
+          street
+          aptNum
+          city
+          state
+          zipcode
+        }
+        phone
+        email
+      }
+      connections{
+        name
+        handle
+        personalContact{
+          address{
+            street
+            aptNum
+            city
+            state
+            zipcode
+          }
+          phone
+          email
+        }
+      }
+      groups{
+        _id
+        title
+        connections{
+        name
+        handle
+        personalContact{
+            address{
+              street
+              aptNum
+              city
+              state
+              zipcode
+            }
+            phone
+            email
+          }
+        }
       }
     }
   }`

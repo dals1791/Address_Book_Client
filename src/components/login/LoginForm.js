@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import {useLazyQuery} from '@apollo/client'
+import {useLazyQuery, client} from '@apollo/client'
 import {LOGIN} from '../../graphql/Queries'
-import {saveToken, destroyToken} from '../../helpers/AuthToken'
+import {saveToken, logout} from '../../helpers/AuthToken'
 
 
 const LoginForm = (props)=>{
@@ -30,9 +30,7 @@ const LoginForm = (props)=>{
       
     };
     
-    const logout =()=>{
-      destroyToken()
-    }
+    
     return (
     
       <div className="login-container">
@@ -62,7 +60,7 @@ const LoginForm = (props)=>{
             Login
           </button>
         </form>
-      <button  className="form-button" onClick={logout}>logout</button>
+      
       <p onClick={handleToggleForm}>New User? Click here to create a new account</p>
       
       </div>

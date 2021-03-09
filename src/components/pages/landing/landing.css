@@ -1,0 +1,26 @@
+.landing-container{
+
+    width: 100%;
+}
+.landing-title{
+    width: 100%;
+    text-align: center;
+}
+
+.group-container{
+    display: flex;
+    border: 1px solid;
+    margin-top: 1rem;
+    
+}
+
+.group-title{
+    font-weight: bold;
+    border: 2px solid;
+    border-radius: 0 .75rem .75rem  0px;
+    padding: .5rem;
+    margin-bottom: .2rem;
+    width: 25%;
+    text-align: center;
+    box-shadow: 0px .1rem .2rem black;
+}

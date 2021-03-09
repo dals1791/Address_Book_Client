@@ -1,0 +1,13 @@
+.navbar-container {
+    display: flex;
+    justify-content: center;
+    width: 100%
+}
+/* .navbar-links-container{
+    width: 50%;
+} */
+.navbar-links-container ul{
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+}
