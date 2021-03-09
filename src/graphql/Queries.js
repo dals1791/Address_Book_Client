@@ -14,6 +14,7 @@ export const GET_USERS = gql`
       name
       handle
       connections{
+        _id
       name
       }
       groups{
@@ -40,6 +41,7 @@ export const GET_USERS = gql`
         email
       }
       connections{
+        _id
         name
         handle
         personalContact{
@@ -58,6 +60,7 @@ export const GET_USERS = gql`
         _id
         title
         connections{
+        _id
         name
         handle
         personalContact{

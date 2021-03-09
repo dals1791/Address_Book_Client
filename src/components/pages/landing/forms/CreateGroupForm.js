@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
 import {useMutation} from '@apollo/client'
-import {CREATE_GROUP} from '../../../graphql/Mutations'
-import { GET_USER_PROFILE } from '../../../graphql/Queries';
+import {CREATE_GROUP} from '../../../../graphql/Mutations'
+import { GET_USER_PROFILE } from '../../../../graphql/Queries';
 const GroupForm = (props)=>{
     const [formData, setFormData] = useState({
       title: '',
       
     });
     const [createGroup] = useMutation(CREATE_GROUP, {
-        variables: formData, 
+        variables: formData ,
         update: (cache, mutationResult) => {
             console.log(cache)
           const newGroup= mutationResult.data.createGroup;
