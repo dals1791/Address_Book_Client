@@ -1,26 +1,40 @@
 import React, {useState} from 'react'
 import {useMutation} from '@apollo/client'
 import {CREATE_GROUP} from '../../../graphql/Mutations'
+import { GET_USER_PROFILE } from '../../../graphql/Queries';
 const GroupForm = (props)=>{
-  const {handleToggleForm}=props
     const [formData, setFormData] = useState({
-      name: '',
+      title: '',
       
     });
-    const [createGroup, {data}] = useMutation(CREATE_GROUP, {variables: formData})
+    const [createGroup] = useMutation(CREATE_GROUP, {
+        variables: formData, 
+        update: (cache, mutationResult) => {
+          const newGroup= mutationResult.data.createGroup;
+          const data = cache.readQuery({ 
+            query: GET_USER_PROFILE, variables: {title: newGroup.title}
+          }); 
+          cache.writeQuery({
+            query: GET_USER_PROFILE,
+            variables: {title: newGroup.title},
+            data: { userProfile: [...data.userProfile.groups, newGroup] }
+          })
+        }
+        
+      })
     
     const handleSubmit = (event) => {
     event.preventDefault(); // Prevent Form from Refreshing
-    createGroup()
-  };
+    createGroup();
+      
+    };
   
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
-  // console.log("This is Register formData", formData)
+//   console.log("This is GroupForm formData", formData)
   return (
     <div >
-      <h2>Welcome Aboard!</h2>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -31,7 +45,7 @@ const GroupForm = (props)=>{
             <button
               type="submit"
             >
-              Register User
+              +
             </button>
           </form>
           

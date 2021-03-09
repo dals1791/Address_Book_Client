@@ -14,7 +14,6 @@ const LoginForm = (props)=>{
     const  [login, {data}] = useLazyQuery(LOGIN, {variables: formData})
     if(data && data.login.token){
       saveToken(data.login.token)
-      console.log(data.login.token)
     }
     
   

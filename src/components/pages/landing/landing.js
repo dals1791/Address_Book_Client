@@ -34,9 +34,13 @@ const Landing = () =>{
 
 
 return(<div className="landing-container">
-    <div className="landing-title">Groups</div>
+    <div className="landing-title">
+        <h4>Groups</h4>
+        <GroupForm/>
+    </div>
     <div className="group-container">
     {renderGroups()}
+
     </div>
     </div>
 )
