@@ -35,22 +35,18 @@ const GroupForm = (props)=>{
   };
 //   console.log("This is GroupForm formData", formData)
   return (
-    <div >
-          <form onSubmit={handleSubmit}>
+          <form className="create-group-form" onSubmit={handleSubmit}>
             <input
+            className=" create-group-input"
               type="text"
               name="title"
+              placeholder="+ Create a Group +"
               value={formData.title}
               onChange={handleChange}
             />
-            <button
-              type="submit"
-            >
-              +
-            </button>
+            <button className="group-submit-button" type="submit">+</button>
           </form>
-          
-        </div>
+ 
   );
 }
 

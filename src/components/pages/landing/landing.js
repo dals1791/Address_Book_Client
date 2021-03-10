@@ -10,7 +10,8 @@ import GroupUtility from './modals/GroupUtility'
 
 const Landing = () =>{
     // state for handling Group Title Transition
-    let widthStart ="100%"
+    let widthStart ="100%";
+    
     const [transition, setTransition] = useState({
         width: widthStart,
         id: null,
@@ -55,35 +56,36 @@ const Landing = () =>{
                         className="group-title-container" 
                         style={{
                             width: (group._id===transition.id ? transition.width: widthStart), 
-                            transition: "width .5s linear"
+                            transition: "width .4s linear"
                         }} 
                         onClick={()=>{handleGroupTransition(group._id)}}>
                         
-                            <h3 className="group-title"
-                            >{group.title}</h3>
+                            <h4 className="group-title"
+                            >{group.title}</h4>
 
                             <GroupUtility groupId={group._id} handleDestroyGroup={handleDestroyGroup} transition={transition}/>
 
                             
                         
                     </div>
-                    {transition.id===group._id && transition.transitionStatus?<AddConnectionToGroupForm groupId={group._id}/> : null}
+                    {transition.id===group._id && transition.transitionStatus? <AddConnectionToGroupForm groupId={group._id}/> : null}
                     </div>
-                    
-                    
-                    
-                    
-                    <div className="group-connections-list">
+                 
+                    <div className="group-connections-list" >
                         {group.connections.map(connection=>{
-                            return(
-                             <div className="group-connections-container">
-                                <p>{connection.name}
-                                    <span>
-                                        <button className="crud-button" onClick={()=>{handleDestroyConnection(group._id, connection.handle)}}>X</button>
-                                    </span>
-                                </p>
-                                </div>
-                            )
+                            return(<>
+                                {transition.id===group._id && transition.transitionStatus ? 
+                                    <div className="group-connections-container">
+                                       
+                                        <p>{connection.name}
+                                            <span>
+                                                <button className="crud-button" onClick={()=>{handleDestroyConnection(group._id, connection.handle)}}>X</button>
+                                            </span>
+                                        </p>
+                                    </div> 
+                                    : null 
+                                }
+                           </> )
                         })}
                     </div>
                 </div>
@@ -97,6 +99,7 @@ const handleGroupTransition = (id)=>{
     
     let newWidth = transition.width === widthStart ? "195%": widthStart
     let newTransitionStatus = newWidth===widthStart? false : true
+    
     setTransition({
     width: newWidth,
     id: id, 
@@ -110,10 +113,9 @@ const handleGroupTransition = (id)=>{
 // ***********************************************************
 
 return(<div className="landing-container">
-    <div className="landing-title">
-        <h4>Groups</h4>
+    <header className="landing-title">
         <GroupForm/>
-    </div>
+    </header>
     <div className="group-main-container">
     {renderGroups()}
 

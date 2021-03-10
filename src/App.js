@@ -18,9 +18,8 @@ function App() {
     
     <div className="App">
       <header className="App-header-container">
-      <Topbar/>
+
       </header>
-      <hr/>
       <div className="App-Body-Container">
       <Switch>
           <Route  exact path="/">

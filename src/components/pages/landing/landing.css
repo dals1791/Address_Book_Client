@@ -3,17 +3,54 @@
     width: 100%;
 }
 .landing-title{
-    width: 100%;
+    padding: 1rem;
+    padding-bottom: 0;
+    margin: 0;
     text-align: center;
+    background-color: rgb(232, 232, 232);
+    /* background-color: white; */
 }
+.create-group-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.group-submit-button{
+    width: 55%;
+    align-self: center;
+    border: none;
+    padding: .75rem 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    border-radius: 16px;
+    box-shadow: 0px .1rem .2rem lightgreen;
+    /* background-color: rgb(237, 237, 237); */
+    background-color: white;
+
+}
+.create-group-input{
+    /* background-color: rgb(237, 237, 237); */
+    background-color: white;
+    border: none;
+    /* border-bottom: 2px solid; */
+    border-radius: 10px;
+    padding: 5% 10%;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: .75rem;
+    cursor: pointer;
+    box-shadow: 0px .3rem .4rem lightblue;
+}
+
 
 .group-main-container{
     display: flex;
     flex-direction: column;
     border: 1px solid;
-    margin-top: 1rem;
     background-color: lightblue;
-    
 }
 .groups-container{
     width: 50%
@@ -23,17 +60,17 @@
     display: flex;
     justify-content: space-between;
     font-weight: bold;
-    border: 2px solid;
+    /* border: 2px solid; */
     border-radius: 0 .75rem .75rem  0px;
     /* padding: .6rem; */
-    margin-bottom: .2rem;
-    box-shadow: 0px .1rem .2rem black;
+    margin: .25rem 0;
+    box-shadow: 0px .1rem .3rem black;
     background-color: white;
     height: auto;
 }
 .group-title{
     grid-row: 1/2;
-    margin: .5rem;
+    margin: .75rem;
     height:100%;
     
 }
@@ -52,9 +89,22 @@
     margin: 0;
 }
 .add-connection-to-group-input {
+    margin-top: .5rem;
     margin-left: .25rem;
+    height: 100%;
+    border: none;
+    background-color: lightblue;
+    border-bottom: 3px solid;
 }
 .plus-button{
    
    margin: 0 .25rem;
+}
+.group-connections-list{
+    /* background-color: lightpink; */
+    margin-left: .25rem;
+}
+::placeholder {
+    color: black;
+    
 }
