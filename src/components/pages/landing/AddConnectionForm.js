@@ -20,9 +20,10 @@ const AddConnection = (props)=>{
   };
   // console.log("This is Connection formData", formData)
   return (
-    <div >
+    <div className="add-connection-form-container" >
           <form onSubmit={handleSubmit}>
             <input
+            className="add-group-input"
               type="text"
               placeholder="new connection"
               name="handle"

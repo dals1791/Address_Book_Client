@@ -23,15 +23,17 @@ const AddConnectionToGroupForm = (props)=>{
   // console.log("This is AddConnectionToGroupForm formData", formData)
   
   return (
-    <div >
+    <div className="add-connection-group-container">
           <form onSubmit={handleSubmit}>
             <input
+              className="add-connection-to-group-input"
               type="text"
               name="handle"
               value={formData.handle}
               onChange={handleChange}
             />
             <button
+              className="plus-button"
               type="submit"
             >
               +
