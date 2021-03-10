@@ -11,9 +11,10 @@ const Logout =(props) =>{
     
     
     // props.handleLoginStatus()
-    history.push('/')
+    
     localStorage.clear()
-    client.resetStore()
+    client.clearStore()
+    history.push('/')
 
  }
    return (<>

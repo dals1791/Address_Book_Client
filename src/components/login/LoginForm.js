@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import {useLazyQuery, client} from '@apollo/client'
 import {LOGIN} from '../../graphql/Queries'
 import {saveToken, logout} from '../../authentication/AuthToken'
@@ -10,10 +11,11 @@ const LoginForm = (props)=>{
       username: '', 
       password: ''
     });
-    
+    let history=useHistory()
     const  [login, {data}] = useLazyQuery(LOGIN, {variables: formData})
     if(data && data.login.token){
       saveToken(data.login.token)
+      history.push('/landing')
     }
     
   

@@ -45,7 +45,7 @@ function App() {
             <Connections/>
           </Route>
           <Route  path="/userprofile">
-            <UserProfile handleLoginStatus={handleLoginStatus} />
+            <UserProfile handleLoginStatus={handleLoginStatus} loggedIn={loggedIn}/>
           </Route>
         
         </Switch>

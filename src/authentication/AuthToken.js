@@ -14,7 +14,3 @@ export const getToken =  () =>{
     return JSON.parse(localStorage.getItem(TOKEN)) || ""
 }
 
-// export const signOut = ()=>{
-//     localStorage.clear()
-//     client.resetStore()
-// }
