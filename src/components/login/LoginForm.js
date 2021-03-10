@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import {useLazyQuery, client} from '@apollo/client'
 import {LOGIN} from '../../graphql/Queries'
-import {saveToken, logout} from '../../helpers/AuthToken'
+import {saveToken, logout} from '../../authentication/AuthToken'
 
 
 const LoginForm = (props)=>{
-  const {handleToggleForm}= props
+  const {handleToggleForm, handleLoginStatus}= props
     const [formData, setFormData] = useState({
       username: '', 
       password: ''
@@ -34,7 +34,7 @@ const LoginForm = (props)=>{
     
       <div className="login-container">
         <h2>Welcome Back!</h2>
-        <form className="form-container">
+        <form className="form-container" onSubmit={handleSubmit}>
             <input
               className="form-input"
               type="text"
@@ -54,7 +54,7 @@ const LoginForm = (props)=>{
           <button
             className="form-button"
             type="submit"
-            onClick={handleSubmit}
+            onClick={()=>{handleLoginStatus(true)}}
           >
             Login
           </button>

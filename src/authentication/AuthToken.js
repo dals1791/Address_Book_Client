@@ -1,5 +1,6 @@
 import {useHistory, Redirect} from 'react-router-dom'
-import { useApolloClient} from '@apollo/client'
+import { client} from "../index"
+
 
 
 const TOKEN='SignedToken'
@@ -13,9 +14,7 @@ export const getToken =  () =>{
     return JSON.parse(localStorage.getItem(TOKEN)) || ""
 }
 
-export const SignOut = async ()=>{
-    const client = useApolloClient()
-    localStorage.removeItem(TOKEN)
-    client.resetStore()
-    return <Redirect to="/"/>
-}
+// export const signOut = ()=>{
+//     localStorage.clear()
+//     client.resetStore()
+// }
