@@ -16,28 +16,45 @@
     
 }
 .groups-container{
-    border: 1px solid;
     width: 50%
 }
 
 .group-title-container{
-    display: grid;
-    grid-template-rows: 50% 50%;
+    display: flex;
     justify-content: space-between;
     font-weight: bold;
     border: 2px solid;
     border-radius: 0 .75rem .75rem  0px;
-    padding: .5rem;
+    /* padding: .6rem; */
     margin-bottom: .2rem;
     box-shadow: 0px .1rem .2rem black;
     background-color: white;
-    
+    height: auto;
 }
 .group-title{
     grid-row: 1/2;
+    margin: .5rem;
+    height:100%;
+    
 }
 #group-delete-button{
     grid-row: 1/2;
+    margin: .5rem;
     
      
+}
+.add-connection-group-container{
+    display: flex;
+    
+    width: 100%;
+    align-items: baseline;
+    align-self: flex-end;
+    margin: 0;
+}
+.add-connection-to-group-input {
+    margin-left: .25rem;
+}
+.plus-button{
+   
+   margin: 0 .25rem;
 }

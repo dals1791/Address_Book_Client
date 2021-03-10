@@ -26,20 +26,18 @@ const AddConnectionToGroupForm = (props)=>{
     <div className="add-connection-group-container">
           <form onSubmit={handleSubmit}>
             <input
+              placeholder="Add an Existing Contact"
               className="add-connection-to-group-input"
               type="text"
               name="handle"
               value={formData.handle}
               onChange={handleChange}
             />
-            <button
-              className="plus-button"
-              type="submit"
-            >
+            
+          </form>
+          <button className="plus-button" type="submit" onClick={handleSubmit}>
               +
             </button>
-          </form>
-          
         </div>
   );
 }

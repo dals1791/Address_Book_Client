@@ -4,13 +4,15 @@ import {useMutation, useQuery, gql} from '@apollo/client'
 import{GET_USER_PROFILE} from '../../../graphql/Queries'
 import {DESTROY_GROUP, DESTROY_CONNECT_FROM_GROUP} from '../../../graphql/Mutations'
 import GroupForm from './forms/CreateGroupForm'
+import AddConnectionToGroupForm from './forms/AddConnectionToGroupForm'
 
 import GroupUtility from './modals/GroupUtility'
 
 const Landing = () =>{
     // state for handling Group Title Transition
+    let widthStart ="100%"
     const [transition, setTransition] = useState({
-        width: "100%",
+        width: widthStart,
         id: null,
         transitionStatus: false
     })
@@ -48,17 +50,24 @@ const Landing = () =>{
             
             return(
                 <div key={group._id} className="groups-container">
+                    <div>
                     <div 
                         className="group-title-container" 
                         style={{
-                            width: (group._id===transition.id ? transition.width: "100%"), 
+                            width: (group._id===transition.id ? transition.width: widthStart), 
                             transition: "width .5s linear"
                         }} 
                         onClick={()=>{handleGroupTransition(group._id)}}>
                         
-                            <div className="group-title">{group.title}</div>
+                            <h3 className="group-title"
+                            >{group.title}</h3>
+
                             <GroupUtility groupId={group._id} handleDestroyGroup={handleDestroyGroup} transition={transition}/>
+
+                            
                         
+                    </div>
+                    {transition.id===group._id && transition.transitionStatus?<AddConnectionToGroupForm groupId={group._id}/> : null}
                     </div>
                     
                     
@@ -85,8 +94,9 @@ const Landing = () =>{
 // HELPER FUNCTIONS ****************************************
 
 const handleGroupTransition = (id)=>{
-    let newWidth = transition.width === "100%" ? "190%": "100%"
-    let newTransitionStatus = newWidth==="100%"? false : true
+    
+    let newWidth = transition.width === widthStart ? "195%": widthStart
+    let newTransitionStatus = newWidth===widthStart? false : true
     setTransition({
     width: newWidth,
     id: id, 
