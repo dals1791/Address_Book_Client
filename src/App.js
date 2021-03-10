@@ -37,7 +37,7 @@ function App() {
         
         </Switch>
         </div>
-        <hr/>
+        
         <div className="App-footer-container">
         <NavBar/>
         </div>
