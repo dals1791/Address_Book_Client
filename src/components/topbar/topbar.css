@@ -1,0 +1,9 @@
+.topbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.topbar-container h1{
+    padding-left: 1rem;
+    /* width: 50% */
+}
