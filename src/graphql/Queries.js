@@ -23,6 +23,7 @@ export const GET_USERS = gql`
       }
     }
   }`
+  
   export const GET_USER_PROFILE = gql`
   {
     userProfile{
@@ -30,13 +31,11 @@ export const GET_USERS = gql`
       name
       handle
       personalContact{
-        address{
-          street
-          aptNum
-          city
-          state
-          zipcode
-        }
+        street
+        aptNum
+        city
+        state
+        zipcode
         phone
         email
       }
@@ -45,13 +44,11 @@ export const GET_USERS = gql`
         name
         handle
         personalContact{
-          address{
-            street
-            aptNum
-            city
-            state
-            zipcode
-          }
+          street
+          aptNum
+          city
+          state
+          zipcode
           phone
           email
         }
@@ -60,17 +57,15 @@ export const GET_USERS = gql`
         _id
         title
         connections{
-        _id
-        name
-        handle
-        personalContact{
-            address{
-              street
-              aptNum
-              city
-              state
-              zipcode
-            }
+          _id
+          name
+          handle
+          personalContact{
+            street
+            aptNum
+            city
+            state
+            zipcode
             phone
             email
           }

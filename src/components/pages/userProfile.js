@@ -20,11 +20,11 @@ console.log(data)
                     <p>Phone {personalContact.phone}</p>
                     <p>Email: {personalContact.email}</p>
                     <p>Address:</p>
-                    <p>Street: {personalContact.address.street}</p>
-                    <p>Apt. #: {personalContact.address.aptNum}</p>
-                    <p>City: {personalContact.address.city}</p>
-                    <p>State: {personalContact.address.state}</p>
-                    <p>Zipcode: {personalContact.address.zipcode}</p>
+                    <p>Street: {personalContact.street}</p>
+                    <p>Apt. #: {personalContact.aptNum}</p>
+                    <p>City: {personalContact.city}</p>
+                    <p>State: {personalContact.state}</p>
+                    <p>Zipcode: {personalContact.zipcode}</p>
                 </div>
             )
         }
