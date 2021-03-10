@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
-import {useMutation, ApolloError} from '@apollo/client'
+import {useMutation} from '@apollo/client'
 import {ADD_CONNECT_TO_GROUP} from "../../../../graphql/Mutations"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus} from '@fortawesome/free-solid-svg-icons'
 
 const AddConnectionToGroupForm = (props)=>{
     // console.log("this is props.groupId", props.groupId)
@@ -24,7 +26,7 @@ const AddConnectionToGroupForm = (props)=>{
   
   return (
     <div className="add-connection-group-container">
-          <form onSubmit={handleSubmit}>
+          <form className="add-connection-group-form" onSubmit={handleSubmit}>
             <input
               placeholder="Add an Existing Contact"
               className="add-connection-to-group-input"
@@ -36,7 +38,7 @@ const AddConnectionToGroupForm = (props)=>{
             
           </form>
           <button className="plus-button" type="submit" onClick={handleSubmit}>
-              +
+          <FontAwesomeIcon  className="contact-plus-icon" style={{fontSize: "16px"}} icon={faPlus} />
             </button>
         </div>
   );

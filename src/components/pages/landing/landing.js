@@ -5,12 +5,13 @@ import{GET_USER_PROFILE} from '../../../graphql/Queries'
 import {DESTROY_GROUP, DESTROY_CONNECT_FROM_GROUP} from '../../../graphql/Mutations'
 import GroupForm from './forms/CreateGroupForm'
 import AddConnectionToGroupForm from './forms/AddConnectionToGroupForm'
-
 import GroupUtility from './modals/GroupUtility'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash} from '@fortawesome/free-solid-svg-icons'
 
 const Landing = () =>{
     // state for handling Group Title Transition
-    let widthStart ="100%";
+    let widthStart ="50%";
     
     const [transition, setTransition] = useState({
         width: widthStart,
@@ -77,11 +78,10 @@ const Landing = () =>{
                                 {transition.id===group._id && transition.transitionStatus ? 
                                     <div className="group-connections-container">
                                        
-                                        <p>{connection.name}
-                                            <span>
-                                                <button className="crud-button" onClick={()=>{handleDestroyConnection(group._id, connection.handle)}}>X</button>
-                                            </span>
-                                        </p>
+                                        <p>{connection.name}</p>
+                                        <button className="connection-trash-button" onClick={()=>{handleDestroyConnection(group._id, connection.handle)}}>
+                                                <FontAwesomeIcon  className="group-trash-icon" style={{fontSize: "16px"}} icon={faTrash} />
+                                                </button>
                                     </div> 
                                     : null 
                                 }
@@ -97,7 +97,7 @@ const Landing = () =>{
 
 const handleGroupTransition = (id)=>{
     
-    let newWidth = transition.width === widthStart ? "195%": widthStart
+    let newWidth = transition.width === widthStart ? "105%": widthStart
     let newTransitionStatus = newWidth===widthStart? false : true
     
     setTransition({

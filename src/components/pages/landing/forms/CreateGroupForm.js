@@ -40,11 +40,11 @@ const GroupForm = (props)=>{
             className=" create-group-input"
               type="text"
               name="title"
-              placeholder="+ Create a Group +"
+              placeholder="Add a Group Title"
               value={formData.title}
               onChange={handleChange}
             />
-            <button className="group-submit-button" type="submit">+</button>
+            <button className="group-submit-button" type="submit">Create Group</button>
           </form>
  
   );
