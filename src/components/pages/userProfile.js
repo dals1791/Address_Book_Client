@@ -4,6 +4,7 @@ import Logout from '../logout/Logout'
 import {useMutation, useQuery, gql} from '@apollo/client'
 import{GET_USER_PROFILE} from '../../graphql/Queries'
 
+
 const UserProfile = (props) =>{
     const {handleLoginStatus, loggedIn} = props
 
@@ -36,6 +37,9 @@ return(<>
     <hr/>
     {renderUserProfile()}
     {loggedIn ? <Logout handleLoginStatus={handleLoginStatus}/> : <Link to="/" style={{ textDecoration: "none" }}>Login</Link> }
+    <Link to='/updateinfo'>
+    <button>Update Information</button>
+    </Link>
     
     
     

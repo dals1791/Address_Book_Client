@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useMutation} from '@apollo/client'
-import {Add_CONTACT_INFO} from '../../graphql/Mutations'
+import {ADD_CONTACT_INFO} from '../../graphql/Mutations'
+import {GET_USER_PROFILE} from "../../graphql/Queries"
 
 const AddContactInfoForm = (props)=>{
   
@@ -8,24 +9,38 @@ const AddContactInfoForm = (props)=>{
       phone: '',
       email: '',
       street: '',
-      aptNum: '',
+      aptNum: 0,
       city: '',
       state: '',
       zipcode: '',
     });
 
-    const [addContactInfo, {data}] = useMutation(ADD_CONTACT_INFO, {variables: formData})
+    const [addContactInfo, {data}] = useMutation(ADD_CONTACT_INFO)
     console.log("THis is data for contact info", data)
     
     const handleSubmit = (event) => {
     event.preventDefault(); // Prevent Form from Refreshing
-    addContactInfo()
+    addContactInfo( {
+        variables: formData,
+        update: (cache, mutationResult) => {
+            // console.log(mutationResult)
+          const newContactInfo= mutationResult.data.addContactInfo;
+          const data = cache.readQuery({ 
+            query: GET_USER_PROFILE, variables: {personalContact: newContactInfo}
+          }); 
+          cache.writeQuery({
+            query: GET_USER_PROFILE,
+            variables: {personalContact: newContactInfo},
+            data: { userProfile: data.userProfile.personalContact, newContactInfo }
+          })
+        }
+    })
   };
   
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
-  // console.log("This is Register formData", formData)
+  console.log("This is contactInfo formData", formData)
   return (
     <div className="register-container">
       <h2>UPdate Form</h2>
@@ -56,7 +71,7 @@ const AddContactInfoForm = (props)=>{
             />
             <input
               className="form-input"
-              type="text"
+              type="number"
               name="aptNum"
               placeholder="Apt #"
               value={formData.aptNum}
@@ -91,9 +106,9 @@ const AddContactInfoForm = (props)=>{
               className="form-button"
               type="submit"
             >
-              Register User
+             Update
             </button>
-            <button className="form-button" onClick={handleToggleForm}>Update</button>
+            
             </div>
           </form>
           

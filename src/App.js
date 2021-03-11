@@ -8,6 +8,7 @@ import Connections from "./components/pages/connections"
 import UserProfile from "./components/pages/userProfile"
 import Topbar from './components/topbar/Topbar'
 import {getToken} from './authentication/AuthToken'
+import AddContactInfoForm from './components/pages/AddContactInfoForm'
 
 
 function App() {
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route  path="/userprofile">
             <UserProfile handleLoginStatus={handleLoginStatus} loggedIn={loggedIn}/>
+          </Route>
+          <Route  path="/updateinfo">
+            <AddContactInfoForm/>
           </Route>
         
         </Switch>
