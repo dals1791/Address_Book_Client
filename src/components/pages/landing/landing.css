@@ -15,11 +15,11 @@
 
 }
 .create-group-form{
-    
+    box-shadow: 0px .1rem .8rem black;
 }
 
 .group-submit-button{
-    /* width: 20%; */
+    /* width: 30%; */
     height: 42px;
     align-self: center;
     border: none;
@@ -33,7 +33,12 @@
     /* box-shadow: 0px .2rem .6rem lightblue; */
     background-color: #02babc;
     /* background-color: white; */
+    color: #fdc629;
+    font-weight: bold;
 
+}
+.group-submit-button:hover{
+    background-color: #fd634b;
 }
 .create-group-input{
     /* background-color: rgb(232, 232, 232); */
@@ -47,7 +52,7 @@
     text-decoration: none;
     /* margin-bottom: 1rem; */
     cursor: pointer;
-    width: fit-content;
+    /* width: 60%; */
     height: 40px;
     /* box-shadow: 0px .2rem .6rem lightblue; */
 }
@@ -63,16 +68,17 @@
     80%,
     rgb(34, 34, 34)
   ); */
-  background-image: radial-gradient(
+  /* background-image: radial-gradient(
     farthest-corner at 0px 0px,
     #ADEFD1FF,
     80%,
     #00203FFF
-  );
+  ); */
     height: 100vh;
 }
 .groups-container{
-    width: 100%
+    width: 100%;
+    
 }
 
 .group-title-container{
@@ -87,18 +93,17 @@
     box-shadow: 0px .1rem .3rem black;
     background-color: white;
     height: auto;
+    background-image: linear-gradient(to right,rgba(1, 110, 110, 1) , rgba(0,0,0, 1) );
+    color: white
 }
 .group-title{
     margin: .75rem;
     height:100%;
     font-size: 24px;
     
-}
-#group-delete-button{
-    margin-right: 1rem;
     
-     
 }
+
 .add-connection-group-container{
     display: flex;
     justify-content: space-between;
@@ -110,6 +115,7 @@
 .add-connection-group-form{
     width: 80%;
     margin-bottom: 1rem;
+    
 }
 .add-connection-to-group-input {
     margin-top: .5rem;
@@ -120,6 +126,7 @@
     background-color: transparent;
     border-bottom: 3px solid;
     font-size: 18px;
+    
 }
 .plus-button{
     height: fit-content;
@@ -130,11 +137,13 @@
 }
 .group-connections-container{
 display: flex;
-
+background-image: linear-gradient(to right,rgba(2, 186, 188, .6) , rgba(2, 186, 188, .4) );
+color: white;
 justify-content: space-between;
 align-items: baseline;
 border-radius: .25rem;
 padding: 0 1rem;
+margin-bottom: 1vh;
 }
 .group-connections-container:hover{
     box-shadow: 0px .1rem .3rem black;
@@ -149,6 +158,13 @@ padding: 0 1rem;
     width: fit-content;
     background: none;
     border: none;
+    color: #fd634b;
+}
+#group-delete-button{
+    margin-right: 1rem;
+
+    
+     
 }
 ::placeholder {
     color: black;
