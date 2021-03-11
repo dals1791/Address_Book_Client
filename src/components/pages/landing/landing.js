@@ -35,7 +35,7 @@ const Landing = () =>{
               groups = groups.filter(({id: groupId}) => groupId !== id);
               cache.writeQuery({ 
                   query: GET_USER_PROFILE, 
-                  data: { userProfile: [...data.userProfile.groups, groups] }
+                  data: { userProfile: [data.userProfile.groups, groups] }
                 })
             }
         })

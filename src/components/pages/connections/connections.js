@@ -22,7 +22,19 @@ const [toggle, setToggle]= useState(false)
 
     const handleDestroyConnection= (id) =>{
       // console.log("this is connectionId", id)
-      destroyConnection({ variables: { connectionId: id }
+      destroyConnection({ variables: { connectionId: id },
+        update: cache => {
+          let connections = [...cache.readQuery({query: GET_CONNECTIONS}).userProfile.connections];
+          connections = connections.filter(({id: connectionId}) => connectionId !== id);
+          cache.writeQuery({ 
+              query: GET_CONNECTIONS, 
+              data: { userProfile: [data.userProfile.connections, connections] }
+            })
+        }
+      
+      
+      
+      
       })
     }
     const handleContactInfo =(id)=>{
