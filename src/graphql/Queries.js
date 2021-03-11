@@ -88,6 +88,26 @@ export const GET_CONNECTIONS = gql`
       _id
       name
       handle
+      personalContact{
+        phone
+        email
+        street
+        aptNum
+        city
+        state
+        zipcode
+      }
+    }
+  }
+}
+`
+export const GET_CONNECTIONS_CONTACT = gql`
+{
+  userProfile{
+    connections{
+      _id
+      name
+      handle
     }
   }
 }
