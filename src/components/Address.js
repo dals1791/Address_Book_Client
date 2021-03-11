@@ -9,7 +9,7 @@ const Address = (props)=>{
         if(id===connection._id){
            return(<>
                
-                 <div className="address-container">
+                 <div className="address-container2">
                      <div className="contact">
                         <p>Name: {connection.name} </p>
                         <p>Handle: {connection.handle}</p>
