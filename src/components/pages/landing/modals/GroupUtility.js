@@ -9,7 +9,7 @@ const GroupUtility =(props)=>{
         if (props.transition.id===props.groupId && props.transition.transitionStatus){
             return(<>
             
-            <button id="group-delete-button" className="crud-button" onClick={()=>{props.handleDestroyGroup(props.groupId)}}>
+            <button id="group-delete-button" className="connection-trash-button" onClick={()=>{props.handleDestroyGroup(props.groupId)}}>
             <FontAwesomeIcon  className="group-trash-icon" style={{fontSize: "16px"}} icon={faTrash} /> 
             </button> 
            

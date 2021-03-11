@@ -63,3 +63,12 @@ export const DESTROY_CONNECTION = gql`
         }
     }
 `
+
+export const ADD_CONTACT_INFO = gql`
+    mutation addContactInfo( $phone: String, $email: String, $street: String, $aptNum: String, $city: String, $state:String, $zipcode: String){
+        addContactInfo(phone: $phone, email: $email, street: $street, aptNum: $aptNum, city: $city, state: $state, zipcode: $zipcode){
+            _id
+            name
+        }
+    }
+`

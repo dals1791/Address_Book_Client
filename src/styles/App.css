@@ -7,3 +7,9 @@ html, body, #App, .App {
   border: 1px solid;
   height:100vh;
 }
+.App-footer-container{
+  height: 75vh;
+}
+.address-container{
+  
+}

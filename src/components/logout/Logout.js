@@ -1,15 +1,22 @@
 import React from 'react'
+import {useHistory} from 'react-router-dom'
+import { client} from "../../index"
 
-import {ApolloConsumer} from "@apollo/client"
-import {Redirect} from 'react-router-dom'
-import {SignOut}from '../../helpers/AuthToken'
-
-const Logout =() =>{
+const Logout =(props) =>{
+  let history = useHistory()
  const signout=()=>{
-     return <SignOut/>
+
+    localStorage.clear()
+    client.clearStore()
+    history.push('/')
+
  }
    return (<>
-   <button  className="form-button" onClick={signout}>logout</button>
+   <button  className="logout-button" onClick={signout}>Logout
+      <span>
+         >
+      </span>
+   </button>
    
    </>)
 

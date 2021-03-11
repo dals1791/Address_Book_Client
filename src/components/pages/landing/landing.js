@@ -25,7 +25,7 @@ const Landing = () =>{
     const [destroyConnectionFromGroup] = useMutation(DESTROY_CONNECT_FROM_GROUP)
     // console. log("this is query data", data)
     if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
+    if (error || data==null) return <p>Error :(</p>;
 // ***********************************************************
 // Handlers for GRAPHQL HOOKS***********************************************************
     const handleDestroyGroup = (id) =>{
@@ -97,7 +97,7 @@ const Landing = () =>{
 
 const handleGroupTransition = (id)=>{
     
-    let newWidth = transition.width === widthStart ? "105%": widthStart
+    let newWidth = transition.width === widthStart ? "100%": widthStart
     let newTransitionStatus = newWidth===widthStart? false : true
     
     setTransition({

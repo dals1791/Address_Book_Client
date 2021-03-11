@@ -6,10 +6,11 @@ import App from './App';
 import {  ApolloProvider, ApolloClient, InMemoryCache, createHttpLink} from '@apollo/client'
 import { setContext } from '@apollo/client/link/context';
 
-import {getToken} from './helpers/AuthToken'
+import {getToken} from './authentication/AuthToken'
 
 const httpLink = createHttpLink({
   uri: 'https://address-book-sd.herokuapp.com/graphql/',
+  // uri: 'http://localhost:4000/graphql', //for dev testing
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -24,7 +25,7 @@ const authLink = setContext((_, { headers }) => {
   }
 });
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 

@@ -5,7 +5,8 @@ import TopBar from '../topbar/Topbar'
 import './auth.css'
 
 
-const Auth = ()=>{
+const Auth = (props)=>{
+    const {handleLoginStatus} = props
     const [toggleForm, setToggleForm] = useState(false)
     const handleToggleForm = () =>{
         setToggleForm(toggle=>!toggleForm)
@@ -17,7 +18,7 @@ const Auth = ()=>{
             <TopBar/>
         </header>
         <hr/>
-    {toggleForm ? <RegisterForm handleToggleForm={handleToggleForm}/> : <LoginForm handleToggleForm={handleToggleForm}/>}
+    {toggleForm ? <RegisterForm handleToggleForm={handleToggleForm}/> : <LoginForm handleToggleForm={handleToggleForm} handleLoginStatus={handleLoginStatus}/>}
     
     </div>
     

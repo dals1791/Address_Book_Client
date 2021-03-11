@@ -10,19 +10,11 @@ query login($username: String!, $password: String!){
 export const GET_USERS = gql`
   {
     users{
-      _id
       name
       handle
-      connections{
-        _id
-      name
-      }
-      groups{
-        _id
-        title
-      }
     }
   }`
+  
   export const GET_USER_PROFILE = gql`
   {
     userProfile{
@@ -30,13 +22,11 @@ export const GET_USERS = gql`
       name
       handle
       personalContact{
-        address{
-          street
-          aptNum
-          city
-          state
-          zipcode
-        }
+        street
+        aptNum
+        city
+        state
+        zipcode
         phone
         email
       }
@@ -45,13 +35,11 @@ export const GET_USERS = gql`
         name
         handle
         personalContact{
-          address{
-            street
-            aptNum
-            city
-            state
-            zipcode
-          }
+          street
+          aptNum
+          city
+          state
+          zipcode
           phone
           email
         }
@@ -60,17 +48,15 @@ export const GET_USERS = gql`
         _id
         title
         connections{
-        _id
-        name
-        handle
-        personalContact{
-            address{
-              street
-              aptNum
-              city
-              state
-              zipcode
-            }
+          _id
+          name
+          handle
+          personalContact{
+            street
+            aptNum
+            city
+            state
+            zipcode
             phone
             email
           }
@@ -78,3 +64,51 @@ export const GET_USERS = gql`
       }
     }
   }`
+
+export const GET_CONTACT_INFO = gql`
+{
+  userProfile{
+    name
+    handle
+    personalContact{
+      phone
+      email
+      street
+      aptNum
+      city
+      state
+      zipcode
+    }
+  }
+}`
+export const GET_CONNECTIONS = gql`
+{
+  userProfile{
+    connections{
+      _id
+      name
+      handle
+      personalContact{
+        phone
+        email
+        street
+        aptNum
+        city
+        state
+        zipcode
+      }
+    }
+  }
+}
+`
+export const GET_CONNECTIONS_CONTACT = gql`
+{
+  userProfile{
+    connections{
+      _id
+      name
+      handle
+    }
+  }
+}
+`

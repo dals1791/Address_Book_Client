@@ -10,7 +10,7 @@ const GroupForm = (props)=>{
     const [createGroup] = useMutation(CREATE_GROUP, {
         variables: formData ,
         update: (cache, mutationResult) => {
-            console.log(cache)
+            // console.log(cache)
           const newGroup= mutationResult.data.createGroup;
           const data = cache.readQuery({ 
             query: GET_USER_PROFILE, variables: {title: newGroup.title}
