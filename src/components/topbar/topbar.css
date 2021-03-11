@@ -1,9 +1,15 @@
 .topbar-container {
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
+   justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    height: 20vh;
+  background-image: linear-gradient(to right,rgba(1, 110, 110, 1) , rgba(1, 110, 110, .9) );
+    color: white;
 }
 .topbar-container h1{
     padding-left: 1rem;
-    /* width: 50% */
+    font-size: 48px;
+    color: white;
 }

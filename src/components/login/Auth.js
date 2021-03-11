@@ -17,7 +17,6 @@ const Auth = (props)=>{
         <header>
             <TopBar/>
         </header>
-        <hr/>
     {toggleForm ? <RegisterForm handleToggleForm={handleToggleForm}/> : <LoginForm handleToggleForm={handleToggleForm} handleLoginStatus={handleLoginStatus}/>}
     
     </div>

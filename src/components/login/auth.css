@@ -5,7 +5,7 @@
     text-align: center;
   }
   .form-button {
-    background-color: green;
+    background-color: #016e6e;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -17,7 +17,7 @@
     border-radius: 16px;
   }
   .form-button:hover {
-      background-color: lightgreen;
+      background-color: #fd634b;
       color: black
   }
   .form-input {

@@ -8,6 +8,7 @@ import AddConnectionToGroupForm from './forms/AddConnectionToGroupForm'
 import GroupUtility from './modals/GroupUtility'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash} from '@fortawesome/free-solid-svg-icons'
+import Address from '../../Address'
 
 const Landing = () =>{
     // state for handling Group Title Transition
@@ -18,6 +19,8 @@ const Landing = () =>{
         id: null,
         transitionStatus: false
     })
+    const [address, setAddress] = useState(null)
+    const [toggle, setToggle] = useState(false)
     
 // GRAPHQL HOOKS ***********************************************************
     const {loading, error, data}= useQuery(GET_USER_PROFILE)
@@ -76,13 +79,14 @@ const Landing = () =>{
                         {group.connections.map(connection=>{
                             return(<>
                                 {transition.id===group._id && transition.transitionStatus ? 
-                                    <div className="group-connections-container">
+                                    address === connection._id && toggle? <Address id={address} data={data} handleAddress={handleAddress}/>
+                                    : <div className="group-connections-container" onClick={()=>{handleAddress(connection._id)}}>
                                        
                                         <p>{connection.name}</p>
                                         <button className="connection-trash-button" onClick={()=>{handleDestroyConnection(group._id, connection.handle)}}>
                                                 <FontAwesomeIcon  className="group-trash-icon" style={{fontSize: "16px"}} icon={faTrash} />
                                                 </button>
-                                    </div> 
+                                    </div>
                                     : null 
                                 }
                            </> )
@@ -109,6 +113,12 @@ const handleGroupTransition = (id)=>{
    })
 
 }
+const handleAddress = (id)=>{
+    setToggle(toggle=>!toggle)
+    setAddress(id)
+   }
+
+
 
 // ***********************************************************
 

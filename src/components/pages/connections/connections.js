@@ -3,7 +3,7 @@ import {useQuery, useMutation} from '@apollo/client'
 import{GET_CONNECTIONS} from '../../../graphql/Queries'
 import{DESTROY_CONNECTION} from '../../../graphql/Mutations'
 import AddConnectionForm from './AddConnectionForm'
-import Address from '../../Address'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash} from '@fortawesome/free-solid-svg-icons'
 import './connections.css'
