@@ -9,7 +9,7 @@ import { setContext } from '@apollo/client/link/context';
 import {getToken} from './authentication/AuthToken'
 
 const httpLink = createHttpLink({
-  uri: 'https://address-book-sd.herokuapp.com/graphql/',
+  uri: 'https://address-book-sd.herokuapp.com/graphql',
   // uri: 'http://localhost:4000/graphql', //for dev testing
 });
 

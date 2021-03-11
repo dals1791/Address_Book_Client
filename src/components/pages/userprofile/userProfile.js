@@ -39,7 +39,6 @@ return(<>
     <header className="user-profile-header-container">
        <h2>Hi!  @{handle} </h2> 
     </header>
-    <hr/>
     <div classname="user-profile-body-container">
         {renderUserProfile()}
         <div className="user-profile-footer">

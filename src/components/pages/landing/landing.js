@@ -35,7 +35,7 @@ const Landing = () =>{
               groups = groups.filter(({id: groupId}) => groupId !== id);
               cache.writeQuery({ 
                   query: GET_USER_PROFILE, 
-                  data: { userProfile: [...data.userProfile.groups, groups] }
+                  data: { userProfile: [data.userProfile.groups, groups] }
                 })
             }
         })
@@ -113,7 +113,7 @@ const handleGroupTransition = (id)=>{
 // ***********************************************************
 
 return(<div className="landing-container">
-    <header className="landing-title">
+    <header className="landing-header">
         <GroupForm/>
     </header>
     <div className="group-main-container">

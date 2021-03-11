@@ -22,7 +22,19 @@ const [toggle, setToggle]= useState(false)
 
     const handleDestroyConnection= (id) =>{
       // console.log("this is connectionId", id)
-      destroyConnection({ variables: { connectionId: id }
+      destroyConnection({ variables: { connectionId: id },
+        update: cache => {
+          let connections = [...cache.readQuery({query: GET_CONNECTIONS}).userProfile.connections];
+          connections = connections.filter(({id: connectionId}) => connectionId !== id);
+          cache.writeQuery({ 
+              query: GET_CONNECTIONS, 
+              data: { userProfile: [data.userProfile.connections, connections] }
+            })
+        }
+      
+      
+      
+      
       })
     }
     const handleContactInfo =(id)=>{
@@ -36,14 +48,16 @@ const [toggle, setToggle]= useState(false)
       return data.userProfile.connections.map(connection=>{
         return (
           <>
-        <div className="connection-container" onClick={()=>{handleContactInfo(connection._id)}}>
-          <div className="connection-name-container">
+        <div className="connection-container" >
+          <div className="connection-name-container" onClick={()=>{handleContactInfo(connection._id)}}>
             <p className="name">{connection.name} </p>
             <small className="handle"> [@{connection.handle}]</small>
           </div>
+          <div className="trash-container">
           <button className="connection-trash-button" onClick={()=>{handleDestroyConnection(connection._id)}}>
             <FontAwesomeIcon  className="group-trash-icon" style={{fontSize: "16px"}} icon={faTrash} />
           </button>
+          </div>
       
         </div>
         {toggleId ===connection._id && toggle ? 

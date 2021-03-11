@@ -2,12 +2,18 @@
 
 }
 .connections-header{
-    padding-top: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
     text-align: center;
-    height: 8vh;
+    height: 20vh;
+
+  background-image: linear-gradient(to right,rgba(1, 110, 110, 1) , rgba(1, 110, 110, .9) )
 }
-.my-connections-body-container{
-    
+.my-connections-body-container h4{
+    padding-left: 2%;
 }
 .connection-container{
     display: flex;
@@ -24,9 +30,16 @@
     justify-content: space-around;
     align-items: baseline;
     padding-left: 2%;
-    width: 30%;
+    width: 90%;
     height: 100%;
     
+}
+.trash-container{
+    display: flex;
+    width: 10%;
+    height: 100%;
+    align-items: center;
+
 }
 .connection-container:hover{
     box-shadow: 0px .1rem .3rem black;
@@ -36,5 +49,5 @@
     margin: 0;
 }
 .handle{
-    margin: 5%;
+   font-size: 14px;
 }
