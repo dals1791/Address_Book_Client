@@ -73,3 +73,20 @@ export const GET_USERS = gql`
       }
     }
   }`
+
+export const GET_CONTACT_INFO = gql`
+{
+  userProfile{
+    name
+    handle
+    personalContact{
+      phone
+      email
+      street
+      aptNum
+      city
+      state
+      zipcode
+    }
+  }
+}`

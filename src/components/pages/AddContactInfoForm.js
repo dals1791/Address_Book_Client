@@ -1,15 +1,16 @@
 import React, {useState} from 'react'
+import {useHistory}from 'react-router-dom'
 import {useMutation} from '@apollo/client'
 import {ADD_CONTACT_INFO} from '../../graphql/Mutations'
-import {GET_USER_PROFILE} from "../../graphql/Queries"
+import {GET_CONTACT_INFO} from "../../graphql/Queries"
 
 const AddContactInfoForm = (props)=>{
-  
+    let history = useHistory()
     const [formData, setFormData] = useState({
       phone: '',
       email: '',
       street: '',
-      aptNum: 0,
+      aptNum: '',
       city: '',
       state: '',
       zipcode: '',
@@ -26,15 +27,16 @@ const AddContactInfoForm = (props)=>{
             // console.log(mutationResult)
           const newContactInfo= mutationResult.data.addContactInfo;
           const data = cache.readQuery({ 
-            query: GET_USER_PROFILE, variables: {personalContact: newContactInfo}
+            query: GET_CONTACT_INFO, variables: {personalContact: newContactInfo}
           }); 
           cache.writeQuery({
-            query: GET_USER_PROFILE,
+            query: GET_CONTACT_INFO,
             variables: {personalContact: newContactInfo},
             data: { userProfile: data.userProfile.personalContact, newContactInfo }
           })
         }
     })
+    history.push('/userprofile')
   };
   
   const handleChange = (event) => {
@@ -71,7 +73,7 @@ const AddContactInfoForm = (props)=>{
             />
             <input
               className="form-input"
-              type="number"
+              type="text"
               name="aptNum"
               placeholder="Apt #"
               value={formData.aptNum}

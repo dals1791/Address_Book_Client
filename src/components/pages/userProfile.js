@@ -2,16 +2,16 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import Logout from '../logout/Logout'
 import {useMutation, useQuery, gql} from '@apollo/client'
-import{GET_USER_PROFILE} from '../../graphql/Queries'
+import{GET_CONTACT_INFO} from '../../graphql/Queries'
 
 
 const UserProfile = (props) =>{
     const {handleLoginStatus, loggedIn} = props
 
-    const {loading, error, data}= useQuery(GET_USER_PROFILE)
+    const {loading, error, data}= useQuery(GET_CONTACT_INFO)
     if (loading) return <p>Loading...</p>;
     if (error || data==null) return <p>Error :(</p>;
-        const {name, handle, username, password, personalContact} = data.userProfile
+        const {name, handle, personalContact} = data.userProfile
 console.log(data)
         const renderUserProfile = ()=>{
             return(
