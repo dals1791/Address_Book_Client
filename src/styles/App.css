@@ -12,5 +12,12 @@ html, body, #App, .App {
   height: 75vh;
 }
 .address-container{
-  
+  display: grid;
+  grid-template-columns: 50% 50%
+}
+.address{
+  grid-column: 2/3
+}
+.contact-close{
+  background-color: #fdc629;
 }

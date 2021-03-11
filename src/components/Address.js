@@ -1,25 +1,42 @@
 import React, {useState} from 'react'
-import {useQuery} from "@apollo/client"
-import {GET_CONTACT_INFO} from '../graphql/Queries'
 
+const Address = (props)=>{
+    const {id} = props
+    console.log(id)
 
-const Address = ()=>{
-    const {loading, error, data}= useQuery(GET_CONTACT_INFO)
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
-        const {name, handle, personalContact}= data.userProfile
+   const render = () =>{
+       return props.data.userProfile.connections.map((connection)=>{
+        if(id===connection._id){
+           return(<>
+               
+                 <div className="address-container">
+                     <div className="contact">
+                        <p>Name: {connection.name} </p>
+                        <p>Handle: {connection.handle}</p>
+                        <p>Phone: {connection.personalContact.phone}</p>
+                        <p>Email: {connection.personalContact.email}</p>
+                    </div>
+                    <div className="address">
+                        <p>Street: {connection.personalContact.street}</p>
+                        <p>Apt. #: {connection.personalContact.aptNum}</p>
+                        <p>City: {connection.personalContact.city}</p>
+                        <p>State: {connection.personalContact.state}</p>
+                        <p>Zipcode: {connection.personalContact.zipcode}</p>
+                    </div>
+                 </div>
+                     
+                 </>
+           )}}
+        )
+
+    }
+       
     return (
-        <div className="address-container">
-            <p>Name: {name} </p>
-            <p>Phone: {personalContact.phone}</p>
-            <p>Email: {personalContact.email}</p>
-            <p>Street: {personalContact.street}</p>
-            <p>Apt. #: {personalContact.aptNum}</p>
-            <p>City: {personalContact.city}</p>
-            <p>State: {personalContact.state}</p>
-            <p>Zipcode: {personalContact.zipcode}</p>
-        </div>
-        
+<>  
+        <button className="contact-close" onClick= {props.handleAddress}>X</button>
+        {render()}
+       
+   </>
     )
 }
 
