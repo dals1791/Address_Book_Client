@@ -4,11 +4,11 @@ import Auth from './components/login/Auth'
 import './styles/App.css';
 import NavBar from './components/navbar/nav'
 import Landing from "./components/pages/landing/landing"
-import Connections from "./components/pages/connections"
-import UserProfile from "./components/pages/userProfile"
+import Connections from "./components/pages/connections/connections"
+import UserProfile from "./components/pages/userprofile/userProfile"
 import Topbar from './components/topbar/Topbar'
 import {getToken} from './authentication/AuthToken'
-import AddContactInfoForm from './components/pages/AddContactInfoForm'
+import AddContactInfoForm from './components/pages/userprofile/AddContactInfoForm'
 
 
 function App() {

@@ -10,17 +10,8 @@ query login($username: String!, $password: String!){
 export const GET_USERS = gql`
   {
     users{
-      _id
       name
       handle
-      connections{
-        _id
-      name
-      }
-      groups{
-        _id
-        title
-      }
     }
   }`
   
@@ -90,3 +81,14 @@ export const GET_CONTACT_INFO = gql`
     }
   }
 }`
+export const GET_CONNECTIONS = gql`
+{
+  userProfile{
+    connections{
+      _id
+      name
+      handle
+    }
+  }
+}
+`

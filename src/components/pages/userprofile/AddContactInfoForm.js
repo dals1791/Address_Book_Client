@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
+import {Link} from 'react-router-dom'
 import {useHistory}from 'react-router-dom'
 import {useMutation} from '@apollo/client'
-import {ADD_CONTACT_INFO} from '../../graphql/Mutations'
-import {GET_CONTACT_INFO} from "../../graphql/Queries"
+import {ADD_CONTACT_INFO} from '../../../graphql/Mutations'
+import {GET_CONTACT_INFO} from "../../../graphql/Queries"
 
 const AddContactInfoForm = (props)=>{
     let history = useHistory()
@@ -15,9 +16,11 @@ const AddContactInfoForm = (props)=>{
       state: '',
       zipcode: '',
     });
-
+    
     const [addContactInfo, {data}] = useMutation(ADD_CONTACT_INFO)
-    console.log("THis is data for contact info", data)
+
+    
+    // console.log("THis is data for contact info", data)
     
     const handleSubmit = (event) => {
     event.preventDefault(); // Prevent Form from Refreshing
@@ -42,16 +45,16 @@ const AddContactInfoForm = (props)=>{
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
-  console.log("This is contactInfo formData", formData)
+//   console.log("This is contactInfo formData", formData)
   return (
     <div className="register-container">
-      <h2>UPdate Form</h2>
+      <h2>Update Your Information</h2>
           <form className="form-container" onSubmit={handleSubmit}>
             <input
               className="form-input"
               type="text"
               name="phone"
-              placeholder="Phone"
+              placeholder= "Phone"
               value={formData.phone}
               onChange={handleChange}
             />
@@ -113,7 +116,9 @@ const AddContactInfoForm = (props)=>{
             
             </div>
           </form>
-          
+          <Link to="/userprofile">
+          <button className="form-button">Back</button>
+          </Link>
         </div>
   );
 }
