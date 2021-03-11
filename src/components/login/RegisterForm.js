@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import {useMutation} from '@apollo/client'
 import {CREATE_USER} from '../../graphql/Mutations'
 const RegisterForm = (props)=>{
+  let history = useHistory()
   const {handleToggleForm}=props
     const [formData, setFormData] = useState({
       name: '',
@@ -14,6 +16,7 @@ const RegisterForm = (props)=>{
     const handleSubmit = (event) => {
     event.preventDefault(); // Prevent Form from Refreshing
     createUser()
+    handleToggleForm()
   };
   
   const handleChange = (event) => {
