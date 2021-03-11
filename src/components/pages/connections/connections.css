@@ -2,9 +2,10 @@
 
 }
 .connections-header{
-    padding-top: 4vh;
+    padding-top: 3vh;
     text-align: center;
     height: 8vh;
+    border-bottom: 1px solid;
 }
 .my-connections-body-container{
     
@@ -24,9 +25,16 @@
     justify-content: space-around;
     align-items: baseline;
     padding-left: 2%;
-    width: 30%;
+    width: 90%;
     height: 100%;
     
+}
+.trash-container{
+    display: flex;
+    width: 10%;
+    height: 100%;
+    align-items: center;
+
 }
 .connection-container:hover{
     box-shadow: 0px .1rem .3rem black;

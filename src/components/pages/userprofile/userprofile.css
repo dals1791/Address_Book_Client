@@ -5,6 +5,11 @@
 .contact-info-container h3,.contact-info-container p, .contact-info-container h4 {
     margin: 3%;
 }
+.user-profile-header-container{
+    padding-top: 3vh;
+    text-align: left;
+    height: 8vh;
+}
 .contact-info-container{
    
     position: fixed;
