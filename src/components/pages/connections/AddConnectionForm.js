@@ -47,17 +47,18 @@ const AddConnection = (props)=>{
     <div className="add-connection-form-container" >
           <form onSubmit={handleSubmit}>
             <input
-            className="add-group-input"
+            className=" create-group-input"
               type="text"
-              placeholder="new connection"
+              placeholder="Find a new Connection"
               name="handle"
               value={formData.handle}
               onChange={handleChange}
             />
             <button
+            className="group-submit-button"
               type="submit"
             >
-              +
+              Connect
             </button>
           </form>
           

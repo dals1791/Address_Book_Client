@@ -113,7 +113,7 @@ const handleGroupTransition = (id)=>{
 // ***********************************************************
 
 return(<div className="landing-container">
-    <header className="landing-title">
+    <header className="landing-header">
         <GroupForm/>
     </header>
     <div className="group-main-container">

@@ -44,7 +44,7 @@ const GroupForm = (props)=>{
               value={formData.title}
               onChange={handleChange}
             />
-            <button className="group-submit-button" type="submit">Create Group</button>
+            <button className="group-submit-button" type="submit">Create</button>
           </form>
  
   );

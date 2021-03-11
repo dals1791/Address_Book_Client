@@ -2,13 +2,18 @@
 
 }
 .connections-header{
-    padding-top: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
     text-align: center;
-    height: 8vh;
-    border-bottom: 1px solid;
+    height: 20vh;
+
+  background-image: linear-gradient(to right,rgba(1, 110, 110, 1) , rgba(1, 110, 110, .9) )
 }
-.my-connections-body-container{
-    
+.my-connections-body-container h4{
+    padding-left: 2%;
 }
 .connection-container{
     display: flex;

@@ -1,6 +1,7 @@
 html, body, #App, .App {
   height: 100vh;
   width: 100%;
+  background-color: rgb(232, 248, 249)
 }
 .App-body-Container{
  
