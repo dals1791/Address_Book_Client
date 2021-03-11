@@ -1,0 +1,35 @@
+.connections-main-container{
+
+}
+.connections-header{
+height: 8vh;
+}
+.my-connections-body-container{
+    
+}
+.connection-container{
+    display: flex;
+    display: row;
+    align-items: baseline;
+    justify-content: space-between;
+    height: 12vh;
+    border-bottom: 1px solid;
+    margin-bottom: 2vh;
+}
+.connection-name-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: baseline;
+    padding-left: 2%;
+    width: 30%;
+    height: 100%;
+    
+}
+.name{
+    font-size: 18px;
+    margin: 0;
+}
+.handle{
+    margin: 5%;
+}

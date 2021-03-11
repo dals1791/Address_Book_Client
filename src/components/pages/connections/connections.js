@@ -2,6 +2,9 @@ import React from 'react'
 import {useQuery, useMutation} from '@apollo/client'
 import{GET_CONNECTIONS} from '../../../graphql/Queries'
 import{DESTROY_CONNECTION} from '../../../graphql/Mutations'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash} from '@fortawesome/free-solid-svg-icons'
+import './connections.css'
 
 const Connections = (props) =>{
   const {loading, error, data}= useQuery(GET_CONNECTIONS)
@@ -21,12 +24,18 @@ const Connections = (props) =>{
     const renderUsers = () =>{
       return data.userProfile.connections.map(user=>{
         return (
-        <div>
-          <p>{user.name}</p>
-          <p>@{user.handle}</p>
-          <button onClick={()=>{handleDestroyConnection(user._id)}}>X</button>
-          <hr/>
+        <div className="connection-container">
+          <div className="connection-name-container">
+            <p className="name">{user.name} </p>
+            <small className="handle"> [@{user.handle}]</small>
+            
+          </div>
+          <button className="connection-trash-button" onClick={()=>{handleDestroyConnection(user._id)}}>
+            <FontAwesomeIcon  className="group-trash-icon" style={{fontSize: "16px"}} icon={faTrash} />
+          </button>
+      
         </div>
+        
         )
       })
     }
@@ -39,6 +48,7 @@ return(<>
     </header>
     <div className="my-connections-body-container">
       <h4>My Connections:</h4>
+      <hr/>
     {renderUsers()}
 
     </div>
