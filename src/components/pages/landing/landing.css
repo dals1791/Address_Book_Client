@@ -81,12 +81,13 @@
     height: 100vh;
 }
 .groups-container{
-    width: 95%
+    width: 100%
 }
 
 .group-title-container{
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
     font-weight: bold;
     /* border: 2px solid; */
     border-radius: 0 .75rem .75rem  0px;
@@ -103,8 +104,7 @@
     
 }
 #group-delete-button{
-    grid-row: 1/2;
-    margin: .5rem;
+    margin-right: 1rem;
     
      
 }
@@ -135,12 +135,18 @@
     width: fit-content;
     background: none;
     border: none;
+    margin-right: 1rem;
 }
 .group-connections-container{
 display: flex;
 
 justify-content: space-between;
 align-items: baseline;
+border-radius: .25rem;
+padding: 0 1rem;
+}
+.group-connections-container:hover{
+    box-shadow: 0px .1rem .3rem black;
 }
 .group-connections-list{
     /* background-color: lightpink; */

@@ -97,7 +97,7 @@ const Landing = () =>{
 
 const handleGroupTransition = (id)=>{
     
-    let newWidth = transition.width === widthStart ? "105%": widthStart
+    let newWidth = transition.width === widthStart ? "100%": widthStart
     let newTransitionStatus = newWidth===widthStart? false : true
     
     setTransition({
