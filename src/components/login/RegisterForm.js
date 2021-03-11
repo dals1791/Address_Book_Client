@@ -51,6 +51,7 @@ const RegisterForm = (props)=>{
               value={formData.password}
               onChange={handleChange}
             />
+            <small>Note: [Password must contain one Uppercase, Lowercase, symbol, and number!]</small>
             <input
               className="form-input"
               type="text"
