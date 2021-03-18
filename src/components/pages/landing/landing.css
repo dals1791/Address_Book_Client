@@ -152,6 +152,12 @@ margin-bottom: 1vh;
     /* background-color: lightpink; */
     margin-left: .25rem;
     font-size: 18px;
+    
+}
+.group-connections-list p{
+    word-wrap: break-word;
+    padding: 0 .5rem;
+    font-size: 14px;
 }
 .connection-trash-button{
     height: fit-content;

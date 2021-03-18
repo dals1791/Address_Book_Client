@@ -12,7 +12,7 @@ const RegisterForm = (props)=>{
       handle: ''
     });
     const [createUser, {data}] = useMutation(CREATE_USER, {variables: formData})
-    
+    console.log("this is data", data)
     const handleSubmit = (event) => {
     event.preventDefault(); // Prevent Form from Refreshing
     createUser()
@@ -60,6 +60,7 @@ const RegisterForm = (props)=>{
               value={formData.handle}
               onChange={handleChange}
             />
+            <small>A unique handle is required for your connections to find you!</small>
             <div>
             <button
               className="form-button"

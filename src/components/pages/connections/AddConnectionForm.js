@@ -44,7 +44,7 @@ const AddConnection = (props)=>{
   };
   // console.log("This is Connection formData", formData)
   return (
-    <div className="create-group-form" >
+    <div className="create-connection-form" >
           <form onSubmit={handleSubmit}>
             <input
             className=" create-group-input"

@@ -84,6 +84,7 @@ return(<>
     <div className="connections-main-container">
     <header className="connections-header">
         <AddConnectionForm/>
+        <small>Search by your connections unique handle</small>
     </header>
     <div className="my-connections-body-container">
       <h4>My Connections:</h4>

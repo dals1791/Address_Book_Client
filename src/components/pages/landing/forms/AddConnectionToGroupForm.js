@@ -24,7 +24,7 @@ const AddConnectionToGroupForm = (props)=>{
   };
   // console.log("This is AddConnectionToGroupForm formData", formData)
   
-  return (
+  return (<>
     <div className="add-connection-group-container">
           <form className="add-connection-group-form" onSubmit={handleSubmit}>
             <input
@@ -40,7 +40,10 @@ const AddConnectionToGroupForm = (props)=>{
           <button className="plus-button" type="submit" onClick={handleSubmit}>
           <FontAwesomeIcon  className="contact-plus-icon" style={{fontSize: "16px"}} icon={faPlus} />
             </button>
+            
         </div>
+        <small>Search by your connections unique handle</small>
+        </>
   );
 }
 

@@ -3,6 +3,7 @@
 }
 .connections-header{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0;
@@ -11,6 +12,10 @@
     height: 20vh;
 
   background-image: linear-gradient(to right,rgba(1, 110, 110, 1) , rgba(1, 110, 110, .9) )
+}
+.connections-header small{
+    width: 100%;
+    color: white;
 }
 .my-connections-body-container h4{
     padding-left: 2%;
@@ -50,4 +55,8 @@
 }
 .handle{
    font-size: 14px;
+}
+.create-connection-form{
+width: 100%;
+
 }
