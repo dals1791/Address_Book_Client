@@ -47,7 +47,7 @@ const LoginForm = (props)=>{
             />
             <input
               className="form-input"
-              type="text"
+              type="password"
               name="password"
               placeholder="Enter your Password"
               value={formData.password}
