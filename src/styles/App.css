@@ -1,23 +1,25 @@
-html, body, #App, .App {
+html,
+body,
+#App,
+.App {
   height: 100vh;
   width: 100%;
-  background-color: rgb(232, 248, 249)
+  background-color: rgb(232, 248, 249);
 }
-.App-body-Container{
- 
+.App-body-Container {
   border: 1px solid;
-  height:100vh;
+  height: 100vh;
 }
-.App-footer-container{
+.App-footer-container {
   height: 75vh;
 }
-.address-container2{
+.address-container2 {
   display: grid;
-  grid-template-columns: 50% 50%
+  grid-template-columns: 50% 50%;
 }
-.address{
-  grid-column: 2/3
+.address {
+  grid-column: 2/3;
 }
-.contact-close{
+.contact-close {
   background-color: #fdc629;
 }

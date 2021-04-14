@@ -1,137 +1,161 @@
-import React, {useState, useEffect} from 'react'
-import './landing.css'
-import {useMutation, useQuery, gql} from '@apollo/client'
-import{GET_USER_PROFILE} from '../../../graphql/Queries'
-import {DESTROY_GROUP, DESTROY_CONNECT_FROM_GROUP} from '../../../graphql/Mutations'
-import GroupForm from './forms/CreateGroupForm'
-import AddConnectionToGroupForm from './forms/AddConnectionToGroupForm'
-import GroupUtility from './modals/GroupUtility'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash} from '@fortawesome/free-solid-svg-icons'
-import Address from '../../Address'
+import React, { useState } from "react";
+import "./landing.css";
+import { useMutation, useQuery} from "@apollo/client";
+import { GET_USER_PROFILE } from "../../../graphql/Queries";
+import {
+  DESTROY_GROUP,
+  DESTROY_CONNECT_FROM_GROUP,
+} from "../../../graphql/Mutations";
+import GroupForm from "./forms/CreateGroupForm";
+import AddConnectionToGroupForm from "./forms/AddConnectionToGroupForm";
+import GroupUtility from "./modals/GroupUtility";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import Address from "../../Address";
 
-const Landing = () =>{
-    // state for handling Group Title Transition
-    let widthStart ="50%";
-    
-    const [transition, setTransition] = useState({
-        width: widthStart,
-        id: null,
-        transitionStatus: false
-    })
-    const [address, setAddress] = useState(null)
-    const [toggle, setToggle] = useState(false)
-    
-// GRAPHQL HOOKS ***********************************************************
-    const {loading, error, data}= useQuery(GET_USER_PROFILE)
-    const [destroyGroup] = useMutation(DESTROY_GROUP)
-    const [destroyConnectionFromGroup] = useMutation(DESTROY_CONNECT_FROM_GROUP)
-    // console. log("this is query data", data)
-    if (loading) return <p>Loading...</p>;
-    if (error || data==null) return <p>Error :(</p>;
-// ***********************************************************
-// Handlers for GRAPHQL HOOKS***********************************************************
-    const handleDestroyGroup = (id) =>{
-        destroyGroup({ variables: { groupId: id }, 
-            update: cache => {
-              let groups = [...cache.readQuery({ query: GET_USER_PROFILE}).userProfile.groups];
-              groups = groups.filter(({id: groupId}) => groupId !== id);
-              cache.writeQuery({ 
-                  query: GET_USER_PROFILE, 
-                  data: { userProfile: [data.userProfile.groups, groups] }
-                })
-            }
-        })
-    }
-    const handleDestroyConnection = (id, handle) =>{
-        destroyConnectionFromGroup({variables: 
-            {groupId: id, handle: handle}
-        })
-    }
-// ***********************************************************
-// Main Render Function for Groups *****************************
-    const renderGroups = () =>{
-        return data.userProfile.groups.map(group=>{
-            
-            return(
-                <div key={group._id} className="groups-container">
-                    <div>
-                    <div 
-                        className="group-title-container" 
-                        style={{
-                            width: (group._id===transition.id ? transition.width: widthStart), 
-                            transition: "width .4s linear"
-                        }} 
-                        onClick={()=>{handleGroupTransition(group._id)}}>
-                        
-                            <h4 className="group-title"
-                            >{group.title}</h4>
+const Landing = () => {
+  // state for handling Group Title Transition
+  let widthStart = "50%";
 
-                            <GroupUtility groupId={group._id} handleDestroyGroup={handleDestroyGroup} transition={transition}/>
+  const [transition, setTransition] = useState({
+    width: widthStart,
+    id: null,
+    transitionStatus: false,
+  });
+  const [address, setAddress] = useState(null);
+  const [toggle, setToggle] = useState(false);
 
-                            
-                        
-                    </div>
-                    {transition.id===group._id && transition.transitionStatus? <AddConnectionToGroupForm groupId={group._id}/> : null}
-                    </div>
-                 
-                    <div className="group-connections-list" >
-                        {group.connections.map(connection=>{
-                            return(<>
-                                {transition.id===group._id && transition.transitionStatus ? 
-                                    address === connection._id && toggle? <Address id={address} data={data} handleAddress={handleAddress}/>
-                                    : <div className="group-connections-container" onClick={()=>{handleAddress(connection._id)}}>
-                                       
-                                        <p>{connection.name}</p>
-                                        <button className="connection-trash-button" onClick={()=>{handleDestroyConnection(group._id, connection.handle)}}>
-                                                <FontAwesomeIcon  className="group-trash-icon" style={{fontSize: "16px"}} icon={faTrash} />
-                                                </button>
-                                    </div>
-                                    : null 
-                                }
-                           </> )
-                        })}
-                    </div>
-                </div>
-            )
-        })
-    }
-// ***********************************************************
-// HELPER FUNCTIONS ****************************************
+  // GRAPHQL HOOKS ***********************************************************
+  const { loading, error, data } = useQuery(GET_USER_PROFILE);
+  const [destroyGroup] = useMutation(DESTROY_GROUP);
+  const [destroyConnectionFromGroup] = useMutation(DESTROY_CONNECT_FROM_GROUP);
+  // console. log("this is query data", data)
+  if (loading) return <p>Loading...</p>;
+  if (error || data == null) return <p>Error :(</p>;
+  // ***********************************************************
+  // Handlers for GRAPHQL HOOKS***********************************************************
+  const handleDestroyGroup = (id) => {
+    destroyGroup({
+      variables: { groupId: id },
+      update: (cache) => {
+        let groups = [
+          ...cache.readQuery({ query: GET_USER_PROFILE }).userProfile.groups,
+        ];
+        groups = groups.filter(({ id: groupId }) => groupId !== id);
+        cache.writeQuery({
+          query: GET_USER_PROFILE,
+          data: { userProfile: [data.userProfile.groups, groups] },
+        });
+      },
+    });
+  };
+  const handleDestroyConnection = (id, handle) => {
+    destroyConnectionFromGroup({ variables: { groupId: id, handle: handle } });
+  };
+  // ***********************************************************
+  // Main Render Function for Groups *****************************
+  const renderGroups = () => {
+    return data.userProfile.groups.map((group) => {
+      return (
+        <div key={group._id} className="groups-container">
+          <div>
+            <div
+              className="group-title-container"
+              style={{
+                width:
+                  group._id === transition.id ? transition.width : widthStart,
+                transition: "width .4s linear",
+              }}
+              onClick={() => {
+                handleGroupTransition(group._id);
+              }}
+            >
+              <h4 className="group-title">{group.title}</h4>
 
-const handleGroupTransition = (id)=>{
-    
-    let newWidth = transition.width === widthStart ? "100%": widthStart
-    let newTransitionStatus = newWidth===widthStart? false : true
-    
+              <GroupUtility
+                groupId={group._id}
+                handleDestroyGroup={handleDestroyGroup}
+                transition={transition}
+              />
+            </div>
+            {transition.id === group._id && transition.transitionStatus ? (
+              <AddConnectionToGroupForm groupId={group._id} />
+            ) : null}
+          </div>
+
+          <div className="group-connections-list">
+            {group.connections.map((connection) => {
+              return (
+                <>
+                  {transition.id === group._id &&
+                  transition.transitionStatus ? (
+                    address === connection._id && toggle ? (
+                      <Address
+                        id={address}
+                        data={data}
+                        handleAddress={handleAddress}
+                      />
+                    ) : (
+                      <div
+                        className="group-connections-container"
+                        onClick={() => {
+                          handleAddress(connection._id);
+                        }}
+                      >
+                        <p>{connection.name}</p>
+                        <button
+                          className="connection-trash-button"
+                          onClick={() => {
+                            handleDestroyConnection(
+                              group._id,
+                              connection.handle
+                            );
+                          }}
+                        >
+                          <FontAwesomeIcon
+                            className="group-trash-icon"
+                            style={{ fontSize: "16px" }}
+                            icon={faTrash}
+                          />
+                        </button>
+                      </div>
+                    )
+                  ) : null}
+                </>
+              );
+            })}
+          </div>
+        </div>
+      );
+    });
+  };
+  // ***********************************************************
+  // HELPER FUNCTIONS ****************************************
+
+  const handleGroupTransition = (id) => {
+    let newWidth = transition.width === widthStart ? "100%" : widthStart;
+    let newTransitionStatus = newWidth === widthStart ? false : true;
+
     setTransition({
-    width: newWidth,
-    id: id, 
-    transitionStatus: newTransitionStatus
-    
+      width: newWidth,
+      id: id,
+      transitionStatus: newTransitionStatus,
+    });
+  };
+  const handleAddress = (id) => {
+    setToggle((toggle) => !toggle);
+    setAddress(id);
+  };
 
-   })
+  // ***********************************************************
 
-}
-const handleAddress = (id)=>{
-    setToggle(toggle=>!toggle)
-    setAddress(id)
-   }
-
-
-
-// ***********************************************************
-
-return(<div className="landing-container">
-    <header className="landing-header">
-        <GroupForm/>
-    </header>
-    <div className="group-main-container">
-    {renderGroups()}
-
+  return (
+    <div className="landing-container">
+      <header className="landing-header">
+        <GroupForm />
+      </header>
+      <div className="group-main-container">{renderGroups()}</div>
     </div>
-    </div>
-)
-
-}
-export default Landing
+  );
+};
+export default Landing;

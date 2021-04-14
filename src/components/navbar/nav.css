@@ -13,22 +13,22 @@
   box-shadow: 0px 8px 20px lightblue;
   background-color: white;
 }
-.navbar-links-container{
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+.navbar-links-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
-.navbar-links-container div{
-    margin: 0;
-    text-align: center;
+.navbar-links-container div {
+  margin: 0;
+  text-align: center;
 }
-.navbar-links-container div p{
-    margin: 0;
-    font-size: small;
+.navbar-links-container div p {
+  margin: 0;
+  font-size: small;
 }
-.nav-icon{
-    color: rgba(0,0,0,.3);
+.nav-icon {
+  color: rgba(0, 0, 0, 0.3);
 }
-.nav-icon:hover{
-    color: #6442c4;
+.nav-icon:hover {
+  color: #6442c4;
 }
